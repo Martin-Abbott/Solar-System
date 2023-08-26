@@ -3,7 +3,20 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Solar System</title>
+		<meta name="description" content="Martin Abbott's developer portfolio" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Martin's World</title>
 	</head>
-	<body></body>
+	<body>
+		<canvas class="webgl"></canvas>
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "https://cdn.skypack.dev/three@0.142.0/build/three.module",
+					"three/": "https://cdn.skypack.dev/three@0.142.0/"
+				}
+			}
+		</script>
+		<script type="module" src="main.js"></script>
+	</body>
 </html>

@@ -8,38 +8,42 @@ const dims = {
 
 const scene = new THREE.Scene();
 
-const earth = new THREE.Mesh(
+const sun = new THREE.Mesh(
 	new THREE.SphereGeometry(3, 64, 64),
 	new THREE.MeshBasicMaterial({
 		map: new THREE.TextureLoader().load("./img/sun-map.jpeg"),
 	})
 );
 
-scene.add(earth);
+scene.add(sun);
 
-const starGeometry = new THREE.BufferGeometry();
+function addStars(count) {
+	const starGeometry = new THREE.BufferGeometry();
 
-const starMaterial = new THREE.PointsMaterial({
-	color: 0xfdf4dc,
-});
+	const starMaterial = new THREE.PointsMaterial({
+		color: 0xfdf4dc,
+	});
 
-const starPositions = [];
+	const starPositions = [];
 
-for (let i = 0; i < 15000; i++) {
-	const x = (Math.random() - 0.5) * 2000;
-	const y = (Math.random() - 0.5) * 2000;
-	const z = (Math.random() - 0.5) * 2000 + 50;
-	starPositions.push(x, y, z);
+	for (let i = 0; i < count; i++) {
+		const x = (Math.random() - 0.5) * 2000;
+		const y = (Math.random() - 0.5) * 2000;
+		const z = (Math.random() - 0.5) * 2000 + 50;
+		starPositions.push(x, y, z);
+	}
+
+	starGeometry.setAttribute(
+		"position",
+		new THREE.Float32BufferAttribute(starPositions, 3)
+	);
+
+	const stars = new THREE.Points(starGeometry, starMaterial);
+
+	scene.add(stars);
 }
 
-starGeometry.setAttribute(
-	"position",
-	new THREE.Float32BufferAttribute(starPositions, 3)
-);
-
-const stars = new THREE.Points(starGeometry, starMaterial);
-
-scene.add(stars);
+addStars(15000);
 
 const camera = new THREE.PerspectiveCamera(45, dims.width / dims.height);
 camera.position.z = 25;
@@ -70,10 +74,10 @@ screen.orientation.addEventListener("change", () => {
 	window.location.reload();
 });
 
-const resizeLoop = () => {
+const animationLoop = () => {
 	controls.update();
 	renderer.render(scene, camera);
-	window.requestAnimationFrame(resizeLoop);
+	window.requestAnimationFrame(animationLoop);
 };
 
-resizeLoop();
+animationLoop();

@@ -1,14 +1,14 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import sunMap from "./img/sun-map.jpeg";
-import mercuryMap from "./img/mercury-map.jpeg";
-import venusMap from "./img/venus-map.jpeg";
-import earthMap from "./img/earth-map.jpg";
-import marsMap from "./img/mars-map.jpeg";
-import jupiterMap from "./img/jupiter-map.jpeg";
-import saturnMap from "./img/saturn-map.jpeg";
-import uranusMap from "./img/uranus-map.jpeg";
-import neptuneMap from "./img/neptune-map.jpeg";
+const sunMap = "./img/sun-map.jpeg";
+const mercuryMap = "./img/mercury-map.jpeg";
+const venusMap = "./img/venus-map.jpeg";
+const earthMap = "./img/earth-map.jpg";
+const marsMap = "./img/mars-map.jpeg";
+const jupiterMap = "./img/jupiter-map.jpeg";
+const saturnMap = "./img/saturn-map.jpeg";
+const uranusMap = "./img/uranus-map.jpeg";
+const neptuneMap = "./img/neptune-map.jpeg";
 
 const dims = {
 	width: document.documentElement.clientWidth,

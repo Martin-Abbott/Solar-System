@@ -26,10 +26,10 @@ const sun = new THREE.Mesh(
 
 scene.add(sun);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.05);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
 scene.add(ambientLight);
 
-const sunLight = new THREE.PointLight(0xffffff, 6, 1000, 0.1);
+const sunLight = new THREE.PointLight(0xffffff, 4, 1000, 0.1);
 scene.add(sunLight);
 
 function addStars(count, color) {

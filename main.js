@@ -30,9 +30,9 @@ function addStars(count, color) {
 	const starPositions = [];
 
 	for (let i = 0; i < count; i++) {
-		const x = (Math.random() - 0.5) * 2000 + 200;
-		const y = (Math.random() - 0.5) * 2000 + 200;
-		const z = (Math.random() - 0.5) * 2000 + 200;
+		const x = (Math.random() - 0.5) * 2000 + 250;
+		const y = (Math.random() - 0.5) * 2000 + 250;
+		const z = (Math.random() - 0.5) * 2000 + 250;
 		starPositions.push(x, y, z);
 	}
 
@@ -69,18 +69,18 @@ function addPlanet(size, map, tilt, position) {
 	return { mesh, group };
 }
 
-const mercury = addPlanet(1, mercuryMap, 0, 18);
-const venus = addPlanet(1.5, venusMap, 180, 22);
-const earth = addPlanet(2, earthMap, 0, 27);
-const mars = addPlanet(2, marsMap, 0, 34);
-const jupiter = addPlanet(3, jupiterMap, 0, 44);
-const saturn = addPlanet(4, saturnMap, 0, 56);
-const uranus = addPlanet(5, uranusMap, 0, 69);
-const neptune = addPlanet(4, neptuneMap, 0, 85);
+const mercury = addPlanet(1, mercuryMap, 0, 16);
+const venus = addPlanet(2.5, venusMap, 180, 30);
+const earth = addPlanet(2.6, earthMap, 0, 41);
+const mars = addPlanet(1.4, marsMap, 0, 63);
+const jupiter = addPlanet(6, jupiterMap, 0, 80);
+const saturn = addPlanet(5, saturnMap, 0, 100);
+const uranus = addPlanet(3.7, uranusMap, 0, 140);
+const neptune = addPlanet(3.6, neptuneMap, 0, 165);
 
 const camera = new THREE.PerspectiveCamera(45, dims.width / dims.height);
-camera.position.y = 125;
-camera.position.z = 200;
+camera.position.y = 150;
+camera.position.z = 225;
 scene.add(camera);
 
 const canvas = document.querySelector(".webgl");

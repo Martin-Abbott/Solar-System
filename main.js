@@ -26,6 +26,12 @@ const sun = new THREE.Mesh(
 
 scene.add(sun);
 
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.05);
+scene.add(ambientLight);
+
+const sunLight = new THREE.PointLight(0xffffff, 6, 1000, 0.1);
+scene.add(sunLight);
+
 function addStars(count, color) {
 	const starPositions = [];
 
@@ -55,7 +61,7 @@ addStars(15000, 0xfdf4dc);
 function addPlanet(size, map, tilt, position) {
 	const mesh = new THREE.Mesh(
 		new THREE.SphereGeometry(size, 64, 64),
-		new THREE.MeshBasicMaterial({
+		new THREE.MeshStandardMaterial({
 			map: new THREE.TextureLoader().load(map),
 		})
 	);

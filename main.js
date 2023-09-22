@@ -26,10 +26,11 @@ const sun = new THREE.Mesh(
 
 scene.add(sun);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.03);
 scene.add(ambientLight);
 
 const sunLight = new THREE.PointLight(0xffffff, 2, 500, 0.1);
+sunLight.castShadow = true;
 scene.add(sunLight);
 
 function addStars(count, color) {
@@ -84,6 +85,24 @@ const saturn = addPlanet(5, saturnMap, 0, 100);
 const uranus = addPlanet(3.7, uranusMap, 0, 140);
 const neptune = addPlanet(3.6, neptuneMap, 0, 165);
 
+mercury.mesh.castShadow = true;
+venus.mesh.castShadow = true;
+earth.mesh.castShadow = true;
+mars.mesh.castShadow = true;
+jupiter.mesh.castShadow = true;
+saturn.mesh.castShadow = true;
+uranus.mesh.castShadow = true;
+neptune.mesh.castShadow = true;
+
+mercury.mesh.receiveShadow = true;
+venus.mesh.receiveShadow = true;
+earth.mesh.receiveShadow = true;
+mars.mesh.receiveShadow = true;
+jupiter.mesh.receiveShadow = true;
+saturn.mesh.receiveShadow = true;
+uranus.mesh.receiveShadow = true;
+neptune.mesh.receiveShadow = true;
+
 const camera = new THREE.PerspectiveCamera(45, dims.width / dims.height);
 camera.position.y = 150;
 camera.position.z = 225;
@@ -91,6 +110,8 @@ scene.add(camera);
 
 const canvas = document.querySelector(".webgl");
 const renderer = new THREE.WebGLRenderer({ canvas });
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(dims.width, dims.height);
 renderer.setPixelRatio(3);
 renderer.render(scene, camera);
